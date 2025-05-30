@@ -31,17 +31,17 @@
 
 ## Таблицы:
 - Markers
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  latitude REAL NOT NULL,
-  longitude REAL NOT NULL,
-  title text NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  - id INTEGER PRIMARY KEY AUTOINCREMENT,
+  - latitude REAL NOT NULL,
+  - longitude REAL NOT NULL,
+  - title text NOT NULL,
+  - created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 
 - Marker_Images
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  marker_id INTEGER NOT NULL,
-  uri TEXT NOT NULL,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  - id INTEGER PRIMARY KEY AUTOINCREMENT,
+  - marker_id INTEGER NOT NULL,
+  - uri TEXT NOT NULL,
+  - created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 
 # Описание подхода к обработке ошибок
 
