@@ -1,50 +1,50 @@
-# Welcome to your Expo app 👋
+# Приложение на React Native с картой – Практическое задание
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Инструкциями по установке
 
-## Get started
-
-1. Install dependencies
+1. Установка зависимостей
 
    ```bash
    npm install
    ```
 
-2. Start the app
+2. Запуск приложения
 
    ```bash
     npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Запуск
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+```1. Установка Android Studio для эмулятора и его запуск```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+```2. Запуск expo```
 
-## Get a fresh project
+``` 3.Нажать а для запуска проекта на эмуляторе```
 
-When you're ready, run:
+## - Дополнительными информация
+Вместо zustand из первой части использовался contxet
 
-```bash
-npm run reset-project
-```
+# Документация схемы базы данных
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- Используется SQLite для хранения маркеров и картинок
 
-## Learn more
+## Таблицы:
+- Markers
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  latitude REAL NOT NULL,
+  longitude REAL NOT NULL,
+  title text NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 
-To learn more about developing your project with Expo, look at the following resources:
+- Marker_Images
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  marker_id INTEGER NOT NULL,
+  uri TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+# Описание подхода к обработке ошибок
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Все запросы к БД вначале проверяют инициализацию базы данных и только потом выполняются
+- Также обрабатываются ошибки навигации и работы с изображениями 
+- Для реализации транзакции был создан отдельный запрос который удлаяет и маркер и вложенные в него картинки
